@@ -16,6 +16,14 @@ nav {
     justify-content: center;
 }
 
+nav button {
+    padding: 10px;
+}
+
+nav button:hover {
+    background-color: #303030;
+}
+
 nav .container {
     background-color: #1a1a1a;
 
@@ -37,4 +45,22 @@ nav button {
     border: none;
     background-color: #1a1a1a;
     color: #fff;
+}
+
+@media (min-width: 768px) {
+    nav .container {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav .hide {
+        opacity: 1;
+        height: 100%;
+    }
+
+    #event-button {
+        display: none;
+    }
+
 }
