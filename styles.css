@@ -69,12 +69,11 @@ nav .container button:hover {
 /* Image Carousel */
 
 .carousel {
+    position: relative;
     padding: 10px;
     background-color: red;
     display: flex;
     justify-content: center;
-    overflow: hidden;
-
 }
 
 .box {
@@ -96,4 +95,52 @@ img {
     top: 0;
     width: 100%;
     height: 100%;
+}
+
+.rl-button {
+    position: absolute;
+    border-radius: 50%;
+    width: 3%;
+    height: 15%;
+    top: 45%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    left: 95%;
+}
+
+.left {
+    left: 2%;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+@media (min-width:1500px) {
+    .arrow {
+        padding: 5px;
+    }
+}
+
+@media (max-width:600px) {
+    .arrow {
+        border-width: 0 1px 1px 0;
+        padding: 0.8px;
+    }
+}
+
+.point-right {
+    transform: rotate(-45deg);
+}
+
+.point-left {
+    transform: rotate(135deg);
 }
