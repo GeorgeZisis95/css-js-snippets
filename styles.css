@@ -151,3 +151,18 @@ img {
 .point-left {
     transform: rotate(135deg);
 }
+
+.bottom-buttons {
+    position: absolute;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    gap: 0.8em;
+}
+
+.bottom-buttons button {
+    border-radius: 50%;
+    width: 3%;
+    aspect-ratio: 1;
+}

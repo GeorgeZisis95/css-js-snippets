@@ -24,12 +24,6 @@ let currentIndex = 0
 const maxIndex = Math.floor(imgs.length / 2)
 const minIndex = -maxIndex
 
-function getImageAt(i) {
-    const centerIndex = Math.floor(imgs.length / 2) // or whatever you consider the center index
-    const total = imgs.length;
-    return images[(centerIndex + i + total) % total]; // wrap safely
-}
-
 rightButton.addEventListener("click", () => {
     currentIndex++
     if (currentIndex > maxIndex) currentIndex = minIndex
@@ -56,3 +50,11 @@ function updateCarousel(currentIndex) {
     });
     resizeObserver.observe(imgs[0])
 }
+
+function getImageAt(i) {
+    const centerIndex = Math.floor(imgs.length / 2) // or whatever you consider the center index
+    const total = imgs.length;
+    return imgs[(centerIndex + i + total) % total]; // wrap safely
+}
+
+console.log(getImageAt(minIndex))
