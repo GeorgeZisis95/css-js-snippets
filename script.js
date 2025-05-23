@@ -13,56 +13,70 @@ eventButton.addEventListener("click", () => {
     }
 })
 
-// Image Carousel
+// Image Carousel, for array we use indeces centered to 0 -> [-2, -1, 0, 1, 2] instead of [0, 1, 2, 3, 4]
 
-imgs = Array.from(document.querySelectorAll(".carousel img"))
+images = Array.from(document.querySelectorAll(".carousel img"))
+bottomBttns = Array.from(document.querySelectorAll(".bottom-buttons button"))
 
 rightButton = document.querySelector(".rl-button.right")
 leftButton = document.querySelector(".rl-button.left")
 
-// The index numbering is [-2, -1, 0, 1, 2]
 let currentIndex = 0
-const maxIndex = Math.floor(imgs.length / 2)
+const maxIndex = Math.floor(images.length / 2)
 const minIndex = -maxIndex
 
-rightButton.addEventListener("click", () => {
-    currentIndex++
-    if (currentIndex > maxIndex) currentIndex = minIndex
-    updateCarousel(currentIndex)
-})
+swipeRight(currentIndex)
+swipeLeft(currentIndex)
+colorManipulation(currentIndex)
 
-leftButton.addEventListener("click", () => {
-    currentIndex--
-    if (currentIndex < minIndex) currentIndex = maxIndex;
-    updateCarousel(currentIndex)
-})
-
-bottomBttns = Array.from(document.querySelectorAll(".bottom-buttons button"))
 bottomBttns.forEach(button => {
     button.addEventListener("click", (event) => {
-        index = bottomBttns.indexOf(event.target)
+        const index = bottomBttns.indexOf(event.target)
         currentIndex = index + minIndex
         updateCarousel(currentIndex)
 
-        // Color Manipulation
-        bottomBttns.forEach(button => {
-            button.style.backgroundColor = "white"
-        })
-        event.target.style.backgroundColor = "black"
+        swipeRight(currentIndex)
+        swipeLeft(currentIndex)
+
+        colorManipulation(currentIndex)
     })
 })
 
+function colorManipulation(currentIndex) {
+    bottomBttns.forEach(button => {
+        button.style.backgroundColor = "white"
+    })
+    const theIndex = currentIndex + maxIndex
+    bottomBttns[theIndex].style.backgroundColor = "black"
+}
 
+function swipeRight(currentIndex) {
+    rightButton.addEventListener("click", () => {
+        currentIndex++
+        if (currentIndex > maxIndex) currentIndex = minIndex
+        updateCarousel(currentIndex)
+        colorManipulation(currentIndex)
+    })
+}
+
+function swipeLeft(currentIndex) {
+    leftButton.addEventListener("click", () => {
+        currentIndex--
+        if (currentIndex < minIndex) currentIndex = maxIndex;
+        updateCarousel(currentIndex)
+        colorManipulation(currentIndex)
+    })
+}
 
 function updateCarousel(currentIndex) {
     const resizeObserver = new ResizeObserver(entries => {
         for (let entry of entries) {
             const width = entry.contentRect.width;
 
-            for (img of imgs) {
+            for (img of images) {
                 img.style.transform = "translateX(" + (-currentIndex * width) + "px)"
             }
         }
     });
-    resizeObserver.observe(imgs[0])
+    resizeObserver.observe(images[0])
 }
