@@ -20,6 +20,7 @@ imgs = Array.from(document.querySelectorAll(".carousel img"))
 rightButton = document.querySelector(".rl-button.right")
 leftButton = document.querySelector(".rl-button.left")
 
+// The index numbering is [-2, -1, 0, 1, 2]
 let currentIndex = 0
 const maxIndex = Math.floor(imgs.length / 2)
 const minIndex = -maxIndex
@@ -27,16 +28,31 @@ const minIndex = -maxIndex
 rightButton.addEventListener("click", () => {
     currentIndex++
     if (currentIndex > maxIndex) currentIndex = minIndex
-    console.log(currentIndex)
     updateCarousel(currentIndex)
 })
 
 leftButton.addEventListener("click", () => {
     currentIndex--
     if (currentIndex < minIndex) currentIndex = maxIndex;
-    console.log(currentIndex)
     updateCarousel(currentIndex)
 })
+
+bottomBttns = Array.from(document.querySelectorAll(".bottom-buttons button"))
+bottomBttns.forEach(button => {
+    button.addEventListener("click", (event) => {
+        index = bottomBttns.indexOf(event.target)
+        currentIndex = index + minIndex
+        updateCarousel(currentIndex)
+
+        // Color Manipulation
+        bottomBttns.forEach(button => {
+            button.style.backgroundColor = "white"
+        })
+        event.target.style.backgroundColor = "black"
+    })
+})
+
+
 
 function updateCarousel(currentIndex) {
     const resizeObserver = new ResizeObserver(entries => {
@@ -50,11 +66,3 @@ function updateCarousel(currentIndex) {
     });
     resizeObserver.observe(imgs[0])
 }
-
-function getImageAt(i) {
-    const centerIndex = Math.floor(imgs.length / 2) // or whatever you consider the center index
-    const total = imgs.length;
-    return imgs[(centerIndex + i + total) % total]; // wrap safely
-}
-
-console.log(getImageAt(minIndex))
