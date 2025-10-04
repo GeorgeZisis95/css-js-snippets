@@ -2,10 +2,10 @@
 
 :root {
     --base-clr: #151c25;
-    --hover-clr: #242a39;
+    --bckg-clr: #242a39;
+    --hover-clr: #3E3E70;
     --line-clr: #d0d0d0;
     --text-clr: #E4E4ED;
-    --accent-clr: #3E3E70;
     --secondary-text-clr: #BABACC;
 }
 
@@ -32,7 +32,7 @@ body {
 
 .container {
     width: 30%;
-    background-color: var(--hover-clr);
+    background-color: var(--bckg-clr);
     padding: 1em;
     border: 1px solid var(--line-clr);
 }
@@ -59,4 +59,41 @@ a {
     border: none;
     font: inherit;
     cursor: pointer;
+}
+
+svg {
+    flex-shrink: 0;
+    fill: var(--text-clr);
+    transition: 200ms ease;
+}
+
+span {
+    flex-grow: 1;
+}
+
+.dropdown-button:hover,
+a:hover {
+    background-color: var(--hover-clr);
+}
+
+.sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+
+    >div {
+        overflow: hidden
+    }
+}
+
+.sub-menu.show {
+    grid-template-rows: 1fr;
+}
+
+.rotate svg:last-child {
+    rotate: -180deg;
+}
+
+.sub-menu a {
+    padding-left: 2em;
 }
