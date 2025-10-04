@@ -7,7 +7,6 @@ Each folder showcases a different functionality, effect, or concept — perfect 
 ## Dropdown Menu Toggle
 
 A simple interactive dropdown menu built with **HTML**, **CSS**, and **JavaScript**. 
-https://georgezisis95.github.io/css-js-snippets/
 
 ### 🧠 Features
 - Clickable title that expands or collapses the menu  
