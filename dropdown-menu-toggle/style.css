@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --base-clr: #151c25;
+    --hover-clr: #242a39;
+    --line-clr: #d0d0d0;
+    --text-clr: #E4E4ED;
+    --accent-clr: #3E3E70;
+    --secondary-text-clr: #BABACC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Nunito Sans", sans-serif;
+    line-height: 1.5rem;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--base-clr);
+    color: var(--text-clr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 30%;
+    background-color: var(--hover-clr);
+    padding: 1em;
+    border: 1px solid var(--line-clr);
+}
+
+ul {
+    list-style: none;
+}
+
+.dropdown-button,
+a {
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.dropdown-button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
