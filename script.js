@@ -3,6 +3,12 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
 });
 
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        document.body.classList.add('loaded');
+    }
+});
+
 const snippets = [
     "dropdown-menu-toggle",
     // Add more folders here when you create new snippets
