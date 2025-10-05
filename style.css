@@ -1,7 +1,4 @@
-/* Body fade-in/out */
 body {
-    opacity: 1;
-    transition: opacity 0.4s ease;
     background-color: #0d1117;
     color: #e6edf3;
     font-family: Arial, sans-serif;
@@ -9,13 +6,6 @@ body {
     padding: 2rem;
 }
 
-body.loaded {
-    opacity: 1;
-}
-
-body.fade-out {
-    opacity: 0;
-}
 
 h1 {
     text-align: center;
